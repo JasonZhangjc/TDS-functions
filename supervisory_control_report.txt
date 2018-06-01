@@ -1,0 +1,39 @@
+          Nonblocking supervisory control report
+
+Allow event 1 to occur at the following state sets:
+1.         {B1_0, B2_0, M1_0/M1_1, M2_0/M2_1, TU_0/TU_1}
+2.         {B1_0, B2_2, TU_0, M1_0/M1_1, M2_0/M2_1}
+3.         {B1_0, B2_1, M2_0, M1_0/M1_1, TU_0/TU_1}
+4.         {B1_0, B2_1, M2_1, TU_0, M1_0/M1_1}
+5.         {B1_1, B2_0, TU_0, M1_0/M1_1, M2_0/M2_1}
+6.         {B1_1, B2_1, M2_0, TU_0, M1_0/M1_1}
+
+Allow event 3 to occur at the following state sets:
+1.         {B1_2, B2_0/B2_1/B2_2, M1_0/M1_1, M2_0/M2_1, TU_0/TU_1}
+2.         {B1_1, B2_0, M1_0/M1_1, M2_0/M2_1, TU_0/TU_1}
+3.         {B1_1, B2_1, M1_0/M1_1, M2_0/M2_1, TU_0/TU_1}
+
+Allow event 5 to occur at the following state sets:
+1.         {B1_0, B2_2, M1_0/M1_1, M2_0/M2_1, TU_0/TU_1}
+2.         {B1_0, B2_1, M1_0/M1_1, M2_0/M2_1, TU_0/TU_1}
+3.         {B1_1, B2_2, M1_0/M1_1, M2_0/M2_1, TU_0/TU_1}
+4.         {B1_1, B2_1, M1_0, M2_0/M2_1, TU_0/TU_1}
+
+
+***************************************************************
+
+Applying the control patterns above, the system under control can reach the supremal state sets:
+1.         {B1_0, B2_0, M1_0/M1_1, M2_0/M2_1, TU_0/TU_1}
+2.         {B1_0, B2_2, M1_0, M2_0, TU_0/TU_1}
+3.         {B1_0, B2_2, M1_1, M2_0, TU_0}
+4.         {B1_0, B2_1, M1_0, M2_0/M2_1, TU_0/TU_1}
+5.         {B1_0, B2_1, M1_1, M2_0, TU_0/TU_1}
+6.         {B1_0, B2_1, M1_1, M2_1, TU_0}
+7.         {B1_2, B2_0, M1_0, TU_0, M2_0/M2_1}
+8.         {B1_2, B2_1, M1_0, M2_0, TU_0}
+9.         {B1_1, B2_0, M1_0, M2_0/M2_1, TU_0/TU_1}
+10.        {B1_1, B2_0, M1_1, TU_0, M2_0/M2_1}
+11.        {B1_1, B2_2, M1_0, M2_0, TU_0}
+12.        {B1_1, B2_1, M1_0, M2_0, TU_0/TU_1}
+13.        {B1_1, B2_1, M1_0, M2_1, TU_0}
+14.        {B1_1, B2_1, M1_1, M2_0, TU_0}
