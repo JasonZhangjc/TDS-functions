@@ -59,8 +59,10 @@ public:
 	vector<transition> m_transitions;
 
 public:
-	automaton(string name, vector<state> states, vector<int> alphabet, vector<transition> transitions):
-	m_name(name), m_states(states), m_alphabet(alphabet), m_transitions(transitions)
+	automaton(string name, vector<state> states, vector<int> alphabet, 
+	          vector<transition> transitions):
+	m_name(name), m_states(states), m_alphabet(alphabet), 
+	m_transitions(transitions)
 	{}
 
 	void print()
@@ -82,8 +84,9 @@ public:
 		int countTransitions = m_transitions.size();
 		cout << "Transitions: " << endl;
 		for (int i = 0; i < countTransitions; i++)
-		{	cout << m_transitions.at(i).getSource() << " - " << m_transitions.at(i).getEvent()
-			<< " - " << m_transitions.at(i).getTarget() << endl;	}
+		{	cout << m_transitions.at(i).getSource() << " - " 
+		         << m_transitions.at(i).getEvent()
+			     << " - " << m_transitions.at(i).getTarget() << endl;	}
 			
 		cout << endl;
 	}
@@ -100,7 +103,8 @@ public:
 
 public:
 	level(string name, string relation, string component1, string component2):
-	m_name(name), m_relation(relation), m_component1(component1), m_component2(component2)
+	m_name(name), m_relation(relation), m_component1(component1), 
+	m_component2(component2)
 	{}
 };
 
@@ -146,13 +150,13 @@ string cat(string a, int b)
 vector<state> syncStates(automaton &A, automaton &B, string AB)
 {
 	// Fisrt generate a vector to store new states
-	// The number of elements in this vector is initialized as the product of the numbers of elements in the two automaton
+	// The number of elements in this vector is initialized as 
+	// the product of the numbers of elements in the two automaton
 	vector<state> product;
 	int count = 0;
 	for (int i = 0; i < A.m_states.size(); i++)
 		for (int j = 0; j < B.m_states.size(); j++)
 		{
-			// Every state should remember the state trace that form the synchronous product.
 			// e.g. if A1 & B1 -> AB1, then m_members should contain A1,B1,AB1.
 			vector<string> members;
 			for (int x = 0; x < A.m_states.at(i).m_members.size(); x++)
@@ -185,7 +189,8 @@ vector<state> syncStates(automaton &A, automaton &B, string AB)
 
 // The transition relation is the most complex part in this short program :)
 // The function returns all relations, which may contain blocking transitions.
-vector<transition> syncTransitions(automaton &A, automaton &B, vector<state> s, vector<transition> &t)
+vector<transition> syncTransitions(automaton &A, automaton &B, vector<state> s, 
+                                   vector<transition> &t)
 {
     vector<transition> t_a = A.m_transitions;
     vector<transition> t_b = B.m_transitions;
@@ -212,17 +217,18 @@ vector<transition> syncTransitions(automaton &A, automaton &B, vector<state> s, 
 				// current_event is the event of current transition.
                 
                 // To determine whether the current event is shared event.
-                vector<int>::iterator ita = find(a_a.begin(), a_a.end(), current_event);
-                vector<int>::iterator itb = find(a_b.begin(), a_b.end(), current_event); 
+                vector<int>::iterator ita = find(a_a.begin(), a_a.end(), 
+                                                 current_event);
+                vector<int>::iterator itb = find(a_b.begin(), a_b.end(), 
+                                                 current_event); 
 				if (ita != a_a.end()) 
 				{
 					// cout << *ita << endl;
-					// cout << "Current_event is found in A's alphabet******" << endl;
+					// cout << "Current_event is found in A's alphabet" << endl;
 					if (itb != a_b.end())
 					{
 						// cout << *itb << endl;
-						// cout << "Current_event is found in B's alphabet!!!!!!!" << endl;
-						// cout << "Shared event is found########" << endl;
+						// cout << "Shared event is found" << endl;
 						
 						for (int k = 0; k < t_b.size(); k++)           
 						// Now go to B to find this transition.
@@ -233,7 +239,8 @@ vector<transition> syncTransitions(automaton &A, automaton &B, vector<state> s, 
 				                if (t_b.at(k).getSource() == d)        
 								// To check the source of the transition is d or not.
 				                {
-				                    // If the source is d, then add a transition of shared event.
+				                    // If the source is d, 
+				                    // then add a transition of shared event.
 									string target;
 				                    string e = t_a.at(j).getTarget();
 				                    string f = t_b.at(k).getTarget();
